@@ -57,7 +57,7 @@ class WebController extends AdminBaseController
     }
     function get_host($to_virify_url = ''){
 
-        $url   = $to_virify_url ? $to_virify_url : $_SERVER['HTTP_HOST'];
+        $url   = $to_virify_url ? $to_virify_url : request()->getHost();
         $data = explode('.', $url);
         $co_ta = count($data);
 

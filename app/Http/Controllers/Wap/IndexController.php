@@ -265,7 +265,7 @@ class IndexController extends WebBaseController
             }
         }
         $dali_mod = '';//判断域名
-        $do_main = $_SERVER['HTTP_HOST'];
+        $do_main = request()->getHost();
 
         if(strpos($do_main,'www') >= 0){
             $m = Member::where('is_daili', 1)->where('agent_uri', $do_main)->first();
@@ -401,7 +401,7 @@ class IndexController extends WebBaseController
             'email' => $email,
             'qq' => $qq,
             'weixin' => $weixin,
-            'register_url'=>$_SERVER['HTTP_HOST'],
+            'register_url'=>request()->getHost(),
         ]);
 
         if (Auth::guard('member')->attempt(['name' => $request->name, 'password' => $request->password]))

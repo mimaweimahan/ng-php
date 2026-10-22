@@ -49,4 +49,8 @@ NG 开户：https://www.neapi.com/zhuce.html
 
 ## 技术栈
 
-PHP 5.6、Laravel 5.4、MySQL 5.6。镜像基于 `php:5.6-apache`，已装 pdo_mysql、mysqli、gd，开了 rewrite，时区设为上海。
+PHP 8.2、Laravel 11、MySQL 8.0。镜像基于 `php:8.2-apache`，已装 pdo_mysql、mysqli、gd、zip，开了 rewrite，时区设为上海。
+
+从 Laravel 5.4 升级而来。认证用的 trait 在 Laravel 11 里被移除，已放到 `app/Auth/` 下继续使用，登录和注册逻辑不变。
+
+`composer.json` 里放行了 4 条安全公告（PKSA-d5tc、PKSA-m5cs、PKSA-3r5d、PKSA-mdq4）。这几条的修复版本只存在于 Laravel 12 及以上，Laravel 11 没有对应的修复版，所以在 11 上无法通过升级消除。

@@ -68,7 +68,7 @@ class Member extends Authenticatable
         'password', 'remember_token',
     ];
 
-    protected $dates = ['deleted_at'];
+    protected $casts = ['deleted_at' => 'datetime'];
 
     public function setPasswordAttribute($value)
     {

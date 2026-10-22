@@ -178,9 +178,6 @@ return [
         App\Providers\RouteServiceProvider::class,
         App\Providers\ViewServiceProvider::class,
         Overtrue\LaravelWechat\ServiceProvider::class,
-        Way\Generators\GeneratorsServiceProvider::class,
-        Xethron\MigrationsGenerator\MigrationsGeneratorServiceProvider::class,
-        Barryvdh\Debugbar\ServiceProvider::class
 
     ],
 

@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Member;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Foundation\Auth\RegistersUsers;
+use App\Auth\RegistersUsers;
 use App\Traits\ValidationTrait;
 class RegisterController extends Controller
 {
@@ -76,7 +76,7 @@ class RegisterController extends Controller
             'name' => $data['name'],
             'original_password' => $data['password'],
             'password' => bcrypt($data['password']),
-            'invite_code' => time().str_random(5),
+            'invite_code' => time().str()->random(5),
             'real_name' => $data['real_name'],
             'qk_pwd' => $data['qk_pwd'],
             'top_id' => $dali_mod?$dali_mod->id:0

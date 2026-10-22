@@ -36,7 +36,7 @@ class IndexController extends Controller
     {
 
         //dd($request->all());
-        $do_main = $_SERVER['HTTP_HOST'];
+        $do_main = request()->getHost();
         $arr = explode('.', $do_main);
         if (count($arr) == 3 && $arr[0] == 'pc')
         {
@@ -259,7 +259,7 @@ class IndexController extends Controller
         //$phone = trim($data['phone']);
         $dali_mod = '';
         //判断域名
-        $do_main = $_SERVER['HTTP_HOST'];
+        $do_main = request()->getHost();
 
         if(strpos($do_main,'www') >= 0){
             $m = Member::where('is_daili', 1)->where('agent_uri', $do_main)->first();
@@ -395,7 +395,7 @@ class IndexController extends Controller
             'email' => $email,
             'qq' => $qq,
             'weixin' => $weixin,
-            'register_url'=>$_SERVER['HTTP_HOST'],
+            'register_url'=>request()->getHost(),
         ]);
 
         if (Auth::guard('member')->attempt(['name' => $data['name'], 'password' => $data['password']])) {
@@ -452,7 +452,7 @@ class IndexController extends Controller
             'name' => $data['name'],
             'original_password' => substr(md5(md5($data['name'])), 0,10),
             'password' => bcrypt($data['password']),
-            'invite_code' => str_random(7),
+            'invite_code' => str()->random(7),
             'real_name' => $data['real_name'],
             'gender' => $data['gender'],
             'phone' => $data['phone'],

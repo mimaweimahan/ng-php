@@ -16,7 +16,7 @@ class TemplateController extends Controller
     public function index(Request $request)
     {
         //
-        $sld_prefix = explode('.',$_SERVER['HTTP_HOST']);
+        $sld_prefix = explode('.',request()->getHost());
         if($sld_prefix[0] == 'tadmin'){
             $url = 'http://tphp.'.$sld_prefix[1].'.'.$sld_prefix[2];
         }else{

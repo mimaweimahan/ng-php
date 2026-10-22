@@ -7,7 +7,7 @@ use App\Models\MemberLoginLog;
 use App\Models\Template;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use App\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Auth;
 use App\Traits\ValidationTrait;
 use Session;

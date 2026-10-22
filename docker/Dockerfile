@@ -1,12 +1,13 @@
-FROM php:5.6-apache
+FROM php:8.2-apache
 
-RUN printf 'deb [trusted=yes] http://archive.debian.org/debian stretch main\n' > /etc/apt/sources.list \
-    && apt-get update \
-    && apt-get install -y --no-install-recommends libpng-dev libjpeg62-turbo-dev libfreetype6-dev \
-    && docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
-    && docker-php-ext-install pdo_mysql mysqli gd \
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends libpng-dev libjpeg62-turbo-dev libfreetype6-dev libzip-dev unzip git \
+    && docker-php-ext-configure gd --with-freetype --with-jpeg \
+    && docker-php-ext-install pdo_mysql mysqli gd zip \
     && a2enmod rewrite \
     && rm -rf /var/lib/apt/lists/*
+
+COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 
 RUN printf 'date.timezone=Asia/Shanghai\n' > /usr/local/etc/php/conf.d/timezone.ini
 

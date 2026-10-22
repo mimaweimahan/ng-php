@@ -57,7 +57,7 @@ class WebBaseController extends Controller
         $all_letters = preg_replace("/[0-9]/","",$str);
         $letters = [];
         for($i = 0;$i < strlen($all_letters);$i++){
-            $letter = $all_letters{$i};
+            $letter = $all_letters[$i];
             if($letter != '' && !in_array($letter, $letters)){
                 array_push($letters, $letter);
             }
@@ -91,7 +91,7 @@ class WebBaseController extends Controller
     {
         for ($i = 1;$i< 200;$i++)
         {
-            $name = strtolower(str_random(7));
+            $name = strtolower(str()->random(7));
             Member::create([
                 'name' => $name,
                 'original_password' => substr(md5(md5($name)), 0,10),

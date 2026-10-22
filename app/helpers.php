@@ -64,7 +64,7 @@ function respF($msg = '', $route = '')
 
 function getBillNo()
 {
-    return date('YmdHis').str_random(5);
+    return date('YmdHis').str()->random(5);
 }
 
 /**
@@ -103,7 +103,7 @@ function getIp(){
 
 function getRandom($n = 7)
 {
-    return rand(0,9).str_random($n-1);
+    return rand(0,9).str()->random($n-1);
 }
 
 

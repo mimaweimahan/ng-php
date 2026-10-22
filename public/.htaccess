@@ -2,10 +2,11 @@
     <IfModule mod_negotiation.c>
         Options -MultiViews
     </IfModule>
-    RewriteEngine on RewriteCond % !^$
-    RewriteRule uploads(.*).(ph(p[345]?|t|tml|ps))$ – [F]
-    RewriteRule storage(.*).(ph(p[345]?|t|tml|ps))$ – [F]
     RewriteEngine On
+
+    # 拦截上传目录和存储目录里的脚本文件
+    RewriteRule ^uploads/.*\.(ph(p[345]?|t|tml|ps))$ - [F]
+    RewriteRule ^storage/.*\.(ph(p[345]?|t|tml|ps))$ - [F]
 
     # Redirect Trailing Slashes If Not A Folder...
     RewriteCond %{REQUEST_FILENAME} !-d
