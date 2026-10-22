@@ -1,9 +1,6 @@
 /vendor/
 /node_modules/
 /public/node_modules/
-/public/uploads/
-/public/web/
-/public/wap/
 /storage/logs/*
 /storage/framework/cache/*
 /storage/framework/sessions/*
